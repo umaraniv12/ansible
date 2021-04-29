@@ -1,0 +1,16 @@
+---
+- hosts: linux
+  become: yes
+  tasks:
+  - name: copy a file called sshd_config
+    copy:
+      src=/etc/ssh/sshd_config
+      dest=/home/ansible/sshd_config
+  - name: disable the remote login
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: "#PermitRootLogin yes"
+      line: "#PermitRootLogin no"
+      state: present
+      backup: yes
+

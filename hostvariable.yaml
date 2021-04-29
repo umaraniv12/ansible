@@ -1,0 +1,8 @@
+---
+- hosts: linux
+  vars:
+    http_port: 83
+  tasks:
+  - name: print host variable
+    debug:
+      msg: "http port is {{http_port}}"

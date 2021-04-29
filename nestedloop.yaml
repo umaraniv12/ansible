@@ -1,0 +1,9 @@
+---
+- hosts: centos
+  tasks: 
+  - name: Execute Nested Loop
+    debug: msg=" ansible {{ item[0] }} on day {{ item[1] }} is {{ item[2] }}"
+    with_nested:
+    - [ 'training' , 'lab' ,'handson' ]
+    - [ 1,2,3 ]
+    - [ 'good', 'bad', 'great' ]

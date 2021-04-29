@@ -1,0 +1,10 @@
+---
+- hosts: linux
+  become: yes
+  tasks:
+  - name: Create user
+    user:
+      name: "{{ username}}"
+      state: present
+      shell: "{{ shell}}"
+       

@@ -1,0 +1,7 @@
+---
+- hosts: win
+  tasks:
+  - name: Create Directory in windows
+    win_file:
+      path: 'c:\temp'
+      state: directory

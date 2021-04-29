@@ -1,0 +1,18 @@
+---
+- hosts: linux
+  tasks:
+  - name: upload file to target server
+    copy:
+      src: /root/playbooks/program.sh
+      dest: /home/ansible/program.sh
+      mode: 0755
+  - name: modify content of the file
+    lineinfile:
+      dest: /home/ansible/program.sh
+      regexp: '^HOST='
+      line: HOST={{ ansible_hostname }}
+      state: present
+  - name: run the script
+    shell: /home/ansible/program.sh
+    register: output
+  - debug: msg=" output is {{ output.stdout }}" 
